@@ -138,6 +138,9 @@ function processProduct(num1, num2, callback) {
 */
 function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+  return callback(list.filter((item, index) => {
+    return list.indexOf(item) === index;
+  }));
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
