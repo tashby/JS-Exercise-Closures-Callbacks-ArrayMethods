@@ -340,12 +340,12 @@ function tallyUpDonations(/* CODE HERE */) {
  * @instructions
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
- * 1. What is the difference between counter1 and counter2?
+ * 1. What is the difference between counter1 and counter2? Global variable vs local var. Diff scope.
  * 
- * 2. Which of the two uses a closure? How can you tell?
+ * 2. Which of the two uses a closure? How can you tell? One uses a closure. Because the function is returned into a variable
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *    One would be used when code needs to be used in multiple places. 2 is great for less usage; and for when the global variable is subject to change.
 */
 
 // counter1 code
@@ -388,6 +388,13 @@ function counter2() {
 */
 function counterMakerWithLimit(/* CODE HERE */) {
   /* CODE HERE */
+  let count = 0;
+  if (count < 1000){
+    return count ++;
+  }
+  else{
+    let count = 0;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
