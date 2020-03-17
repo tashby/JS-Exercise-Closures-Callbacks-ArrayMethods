@@ -185,8 +185,16 @@ function lowerCaseStrings(strings) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
+function isItAnApple(strings) {
   /* code here */
+  return(strings.map((item) => {
+    if (item != 'apple'){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }));
 }
 
 /**
@@ -205,8 +213,13 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
+function removeApple(strings) {
   /* code here */
+  return (strings.filter((item) => {
+    return item != 'apple';
+  }
+  
+  ));
 }
 
 /**
@@ -224,8 +237,12 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
+function stringSmash(strings) {
   /* code here */
+  return(strings.reduce((accum, item) => {
+    return accum + item;
+
+  }));
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -243,8 +260,9 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners) {
   /* CODE HERE */
+
 }
 
 /**
@@ -261,6 +279,7 @@ function getFullNames(/* CODE HERE */) {
 */
 function firstNamesAllCaps(/* CODE HERE */) {
   /* CODE HERE */
+  
 }
 
 /**
@@ -279,6 +298,7 @@ function firstNamesAllCaps(/* CODE HERE */) {
 */
 function getRunnersByTShirtSize(/* CODE HERE */) {
   /* CODE HERE */
+  
 }
 
 /**
