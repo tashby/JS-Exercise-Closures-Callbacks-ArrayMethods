@@ -136,7 +136,7 @@ function processProduct(num1, num2, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
+function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
 }
 
@@ -262,7 +262,11 @@ function stringSmash(strings) {
 */
 function getFullNames(runners) {
   /* CODE HERE */
+  var newarray = runners.map(function callback(item) {
+    return item.last_name + ', ' + item.first_name;
+  });
 
+  return newarray;
 }
 
 /**
@@ -277,8 +281,12 @@ function getFullNames(runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
   /* CODE HERE */
+  var newarray = runners.map(function callback(item) {
+    return item.first_name.toUpperCase();
+  });
+  return newarray;
   
 }
 
@@ -296,8 +304,12 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
+  var newarray = runners.filter(function ShirtSize_get(item) {
+    return item.shirt_size === tShirtSize;
+  });
+  return newarray;
   
 }
 
