@@ -48,8 +48,9 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
+function processLength(list, callback) {
   /* CODE HERE */
+  return callback(list.length);
 }
 
 /**
@@ -66,8 +67,9 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
+function processLastItem(stringlist, callback) {
   /* CODE HERE */
+  return callback(stringlist.pop());
 }
 
 /**
@@ -88,8 +90,9 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `-5`, '-1', and `(num) => num + 1000`,
  * should return 994.
 */
-function processSum(/* CODE HERE */) {
+function processSum(num1, num2, callback) {
   /* CODE HERE */
+  return callback(num1 + num2);
 }
 
 /**
@@ -110,8 +113,9 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
+function processProduct(num1, num2, callback) {
   /* CODE HERE */
+  return callback(num1 * num2);
 }
 
 /**
@@ -132,8 +136,11 @@ function processProduct(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
+function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+  return callback(list.filter((item, index) => {
+    return list.indexOf(item) === index;
+  }));
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -155,8 +162,15 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * 
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function lowerCaseStrings(/* code here */) {
+function lowerCaseStrings(strings) {
   /* code here */
+  let changeStrings = [];
+  strings.forEach((eachElement) => {
+    changeStrings.push(eachElement.toLowerCase());
+  })
+  
+  return changeStrings;
+
 }
 
 /**
@@ -174,8 +188,16 @@ function lowerCaseStrings(/* code here */) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
+function isItAnApple(strings) {
   /* code here */
+  return(strings.map((item) => {
+    if (item != 'apple'){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }));
 }
 
 /**
@@ -194,8 +216,13 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
+function removeApple(strings) {
   /* code here */
+  return (strings.filter((item) => {
+    return item != 'apple';
+  }
+  
+  ));
 }
 
 /**
@@ -213,8 +240,12 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
+function stringSmash(strings) {
   /* code here */
+  return(strings.reduce((accum, item) => {
+    return accum + item;
+
+  }));
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -232,8 +263,13 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners) {
   /* CODE HERE */
+  var newarray = runners.map(function callback(item) {
+    return item.last_name + ', ' + item.first_name;
+  });
+
+  return newarray;
 }
 
 /**
@@ -248,8 +284,13 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
   /* CODE HERE */
+  var newarray = runners.map(function callback(item) {
+    return item.first_name.toUpperCase();
+  });
+  return newarray;
+  
 }
 
 /**
@@ -266,8 +307,13 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
+  var newarray = runners.filter(function ShirtSize_get(item) {
+    return item.shirt_size === tShirtSize;
+  });
+  return newarray;
+  
 }
 
 /**
@@ -294,12 +340,12 @@ function tallyUpDonations(/* CODE HERE */) {
  * @instructions
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
- * 1. What is the difference between counter1 and counter2?
+ * 1. What is the difference between counter1 and counter2? Global variable vs local var. Diff scope.
  * 
- * 2. Which of the two uses a closure? How can you tell?
+ * 2. Which of the two uses a closure? How can you tell? One uses a closure. Because the function is returned into a variable
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *    One would be used when code needs to be used in multiple places. 2 is great for less usage; and for when the global variable is subject to change.
 */
 
 // counter1 code
@@ -342,6 +388,13 @@ function counter2() {
 */
 function counterMakerWithLimit(/* CODE HERE */) {
   /* CODE HERE */
+  let count = 0;
+  if (count < 1000){
+    return count ++;
+  }
+  else{
+    let count = 0;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
